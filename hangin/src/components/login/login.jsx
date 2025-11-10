@@ -11,18 +11,16 @@ function Login() {
     password: "",
   });
 
-  // Update form data on input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle Sign Up
   const handleSignUp = async (e) => {
     e.preventDefault();
 
     const { name, email, password } = formData;
 
-    // Insert user data into Supabase
+
     const { data, error } = await supabase.from("Sign in").insert([
       { Name: name, Email: email, Password: password },
     ]);
@@ -33,8 +31,7 @@ function Login() {
       alert("Signup successful!");
       console.log(data);
       toggle(true); 
-      setFormData({ name: "", email: "", password: "" }); // Reset form
-    }
+      setFormData({ name: "", email: "", password: "" });}
   };
 
   // Handle Sign In
@@ -49,20 +46,19 @@ function Login() {
       .select("*")
       .eq("Email", email)
       .eq("Password", password)
-      .single(); // Expect only one row
+      .single();
 
     if (error || !data) {
       alert("Wrong Credentials");
     } else {
       alert("Login successful! Welcome " + data.Name);
       console.log(data);
-      // You can store user info in state/context if needed
     }
   };
 
   return (
     <Components.Container>
-      {/* Sign Up Form */}
+      {/* signup */}
       <Components.SignUpContainer signinIn={signIn}>
         <Components.Form onSubmit={handleSignUp}>
           <Components.Title style={{ color: "#8e2bff" }}>Create Account</Components.Title>
@@ -94,7 +90,7 @@ function Login() {
         </Components.Form>
       </Components.SignUpContainer>
 
-      {/* Sign In Form */}
+      {/*signin form */}
       <Components.SignInContainer signinIn={signIn}>
         <Components.Form onSubmit={handleSignIn}>
           <Components.Title style={{ color: "#8e2bff" }}>Log In</Components.Title>
@@ -105,7 +101,6 @@ function Login() {
         </Components.Form>
       </Components.SignInContainer>
 
-      {/* Overlay */}
       <Components.OverlayContainer signinIn={signIn}>
         <Components.Overlay signinIn={signIn}>
           <Components.LeftOverlayPanel signinIn={signIn}>

@@ -40,7 +40,7 @@ const fixedData = [
     aqicn: 75,
     maincn: "pm10"
   }
-  // Add more cities as needed
+
 ];
 
 const FixedData = () => {
