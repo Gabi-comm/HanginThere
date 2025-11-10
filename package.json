@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@supabase/supabase-js": "^2.80.0",
+    "styled-components": "^6.1.19"
+  }
+}
