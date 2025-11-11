@@ -55,8 +55,16 @@ const Dashboard = () => {
           <h3 style={{ marginTop: 0, color: '#000000ff' }}>Temperature (°C)</h3>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={data}>
-              <XAxis dataKey="city" stroke="red" tick={{ fill: "red" }} />
-              <YAxis stroke="red" tick={{ fill: "red" }} />
+              <XAxis
+                dataKey="city"
+                stroke="red"
+                tick={{ fill: "red", fontSize: 12 }}
+                interval={0}       
+                angle={-45}            
+                textAnchor="end"       
+                height={70}            
+              />
+              <YAxis stroke="red" tick={{ fill: "red" }} fontSize={"12"}/>
               <Tooltip />
               <Legend />
               <Line type="monotone" dataKey="temp" stroke="#ff0000ff" />
@@ -68,8 +76,8 @@ const Dashboard = () => {
           <h3 style={{ marginTop: 0, color: '#fafafaff' }}>Humidity (%)</h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={data}>
-              <XAxis dataKey="city" stroke="white" tick={{ fill: "white" }} />
-              <YAxis stroke="white" tick={{ fill: "white" }} />
+              <XAxis dataKey="city" stroke="white" tick={{ fill: "white", fontSize: 12 }} interval={0} angle={-45} textAnchor="end" height={70}/>
+              <YAxis stroke="white" tick={{ fill: "white", fontSize: "12" }} />
               <Tooltip />
               <Legend />
               <Bar dataKey="humidity" fill="#000000ff" />
@@ -96,8 +104,8 @@ const Dashboard = () => {
           <h3 style={{ marginTop: 0, color: '#ffffffff' }}>Wind Speed (m/s)</h3>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={data}>
-              <XAxis dataKey="city" stroke="white" tick={{ fill: "white " }} />
-              <YAxis stroke="white" tick={{ fill: "white" }} />
+              <XAxis dataKey="city" stroke="white" tick={{ fill: "white", fontSize: 12 }} interval={0} angle={-45} textAnchor="end" height={70}/>
+              <YAxis  stroke="white" tick={{ fill: "white", fontSize: 12 }} />
               <Tooltip/>
               <Legend/>
               <Line type="monotone" dataKey="wind" stroke="#000000ff" />
@@ -107,11 +115,11 @@ const Dashboard = () => {
 
         {/* Chart 5: Pressure */}
         <div style={{ background: "#ffffff", padding: "20px", borderRadius: 12, width: "100%", maxWidth: "900px", margin: "0 auto", boxShadow: "0 8px 24px rgba(16,24,40,0.06)", border: "1px solid rgba(0,0,0,0.06)", borderLeft: "6px solid #8e2bff", transition: "transform 0.15s ease, box-shadow 0.15s ease" }}>
-          <h3 style={{ marginTop: 0, color: '#333' }}>Pressure (hPa)</h3>
+          <h3 style={{ marginTop: 0, color: '#000000ff' }}>Pressure (hPa)</h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={data}>
-              <XAxis dataKey="city" />
-              <YAxis />
+              <XAxis dataKey="city" stroke="black" tick={{ fill: "black", fontSize: 12 }} interval={0} angle={-45} textAnchor="end" height={70}/>
+              <YAxis  stroke="black" tick={{ fill: "black", fontSize: 12 }} />
               <Tooltip />
               <Legend />
               <Bar dataKey="pressure" fill="#FFBB28" />
