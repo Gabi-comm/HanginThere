@@ -14,6 +14,7 @@ import {
   ResponsiveContainer
 } from "recharts";
 
+
 const data = [
   { city: "Caloocan", temp: 30, humidity: 70, aqi: 85, wind: 3, pressure: 1012 },
   { city: "Malabon", temp: 31, humidity: 72, aqi: 80, wind: 2.5, pressure: 1010 },
