@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as Components from "./laman";
 import { supabase } from "../../services/supabaseClients";
+import { useNavigate } from "react-router-dom";
 import './loginstyle.css';
 
 function Login() {
@@ -36,25 +37,37 @@ function Login() {
 
   // Handle Sign In
   const handleSignIn = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+  const email = e.target.email.value.trim();
+  const password = e.target.password.value.trim();
 
-    const { data, error } = await supabase
-      .from("Sign in")
-      .select("*")
-      .eq("Email", email)
-      .eq("Password", password)
-      .single();
+  const { data, error } = await supabase
+    .from('Sign in')
+    .select('Email, Password, Name');
 
-    if (error || !data) {
-      alert("Wrong Credentials");
-    } else {
-      alert("Login successful! Welcome " + data.Name);
-      console.log(data);
-    }
-  };
+  if (error) {
+    alert("Error fetching users: " + error.message);
+    console.error(error);
+    return;
+  }
+
+  console.log("Fetched data:", data);
+  console.log("Entered email:", email);
+  console.log("Entered password:", password);
+
+  const user = data.find(
+    (row) => row.Email.trim() === email && row.Password.trim() === password
+  );
+
+  if (user) {
+    alert("Login successful! Welcome " + user.Name);
+    navigate("/dashboard");
+  } else {
+    alert("Wrong Credentials");
+  }
+};
+
 
   return (
     <Components.Container>
